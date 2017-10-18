@@ -7,9 +7,27 @@
 //
 
 import UIKit
+import DJISDK
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, DJISDKManagerDelegate {
+    
+    func appRegisteredWithError(_ error: Error?) {
+        
+    }
+    
+//    func showAlertView(withTitle title: String, withMessage message: String) {
+//        UIAlertController
+//    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.registerApp()
+    }
+    
+    func registerApp() {
+        DJISDKManager.registerApp(with: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
